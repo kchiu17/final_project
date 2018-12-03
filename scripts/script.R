@@ -5,9 +5,10 @@ library(devtools)
 ## devtools::install_github('charlie86/spotifyr')
 ## install.packages("spotifyr")
 library(spotifyr)
+source('keys.R')
 
-Sys.setenv(SPOTIFY_CLIENT_ID = "198cd9a9951141fb95d68fe7203ba125")
-Sys.setenv(SPOTIFY_CLIENT_SECRET = "fbde10ed2bff4ec094ebed4caf805e2c")
+Sys.setenv(SPOTIFY_CLIENT_ID = spotify.id)
+Sys.setenv(SPOTIFY_CLIENT_SECRET = spotify.client.secret)
 access_token <- get_spotify_access_token()
 
 hillsong_data <- get_artist_audio_features("Hillsong Worship")
