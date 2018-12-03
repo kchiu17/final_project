@@ -10,10 +10,18 @@ access_token <- get_spotify_access_token()
 
 
 server <- function(input, output) {
+  
+  data <- reactive ({
+    return(get_artist_audio_features(input$artist))
+  })
+  
   output$plot <- renderPlot({
-    d <- get_artist_audio_features(input$artist)
-    plot<-ggplot(d, aes(x=track_name, y=track_number)) +
-      geom_bar(stat="identity")
+    artist_info <- data() %>%
+      filter(tempo >= input$tempo[1], tempo <= input$tempo[2]) %>%
+      filter(danceability >= input$danceability[1], danceability <= input$danceability[2])
+    
+    plot<-ggplot(artist_info, aes(x=track_name, y=track_popularity)) +
+      geom_bar(stat="identity") + coord_flip()
     return(plot)
   })
 }
