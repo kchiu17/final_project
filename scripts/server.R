@@ -1,9 +1,8 @@
 library('shiny')
 library('dplyr')
 library('ggplot2')
+library('spotifyr')
 source('keys.R')
-##data <- read.csv("./data/UFOCoords.csv.bz2") %>%
-  ##filter(State == "NY")
 
 Sys.setenv(SPOTIFY_CLIENT_ID = spotify.id)
 Sys.setenv(SPOTIFY_CLIENT_SECRET = spotify.client.secret)
