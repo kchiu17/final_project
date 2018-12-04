@@ -1,6 +1,7 @@
 # Spotify Me
 [link here!](https://kchiu17.shinyapps.io/scripts/) or here: https://kchiu17.shinyapps.io/scripts/
-##What is Spotify Me?
+
+## What is Spotify Me?
 What we have created is an interactive visualization that allows the user to better understand
 important trends that occur within the songs of different artists that are on Spotify.
 
