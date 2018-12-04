@@ -1,0 +1,12 @@
+name: scripts
+title: scripts
+username:
+account: kchiu17
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 602542
+bundleId: 1738215
+url: https://kchiu17.shinyapps.io/scripts/
+when: 1543899279.94677
+asMultiple: FALSE
+asStatic: FALSE
