@@ -1,11 +1,5 @@
----
-title: "README"
-output: html_document
----
-
 # Spotify Me
-[link here!](https://kchiu17.shinyapps.io/scripts/)
-
+[link here!](https://kchiu17.shinyapps.io/scripts/) or here: https://kchiu17.shinyapps.io/scripts/
 ##What is Spotify Me?
 What we have created is an interactive visualization that allows the user to better understand
 important trends that occur within the songs of different artists that are on Spotify.
@@ -27,7 +21,7 @@ can look it up for themselves as well as the exact measurement of the X and Y ax
 song. The graph will always continue to adapt as the user switches around the filters, the elements,
 and even the artist selection!
 
-##Who Is This For?
+## Who Is This For?
 For this project we thought of three different user groups that we believed could make the best use
 of our visualization.
 * **Dancers:** Our design was highly catered towards making sure that dancers would be able to find
@@ -53,9 +47,9 @@ audience on Spotify. We believe that being able to better understand music wholi
 way as well as allowing producers the freedom to compare as they like would ultimately help them
 make better music.
 
-##What Can This Do For You?
+## What Can This Do For You?
 Beyond these more specific groups of individuals, we believe that this could also help the general
 user of Spotify be able to find music that they enjoy. Being able to find songs to fit their current
-mood, or fit into a specific playlist can be a struggle for any person who uses spotify, and this
+mood, or fit into a specific playlist can be a struggle for any person who uses Spotify, and this
 could ultimately make that a much simpler task. And even above this, being able to see cool
 visualizations of songs from artists that you actually care about is just plain fun!
