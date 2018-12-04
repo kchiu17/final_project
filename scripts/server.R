@@ -44,9 +44,8 @@ server <- function(input, output) {
     input_y <- rlang::sym(axis_key_conversion_y())
     
     plot<-ggplot(artist_info, aes(x=!!input_x, y=!!input_y)) +
-      geom_point(size = 2, shape=1) +
       scale_shape_discrete(solid = F) +
-      geom_point(aes(text = track_name, size = track_popularity)) + 
+      geom_point(aes(text = track_name, size = track_popularity), color = "red", alpha = 1/2) + 
       xlab(input$x) +
       ylab(input$y) 
     plot <- ggplotly(plot)
