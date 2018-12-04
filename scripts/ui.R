@@ -22,13 +22,9 @@ ui <- fluidPage(
       div(style="display:inline-block;vertical-align:top; width: 150px;",
       selectInput("y", "Y-axis", c("Track Popularity", "Album Release Date", "Danceability", "Instrumentalness", "Tempo", "Duration ms"),
                   selected="Danceability", multiple=FALSE)),        
-<<<<<<< HEAD
       textOutput("title"),
       plotlyOutput("plot")
-=======
-      div(style="font-size: 1.5em;text-align:center",textOutput("title"),
-      plotOutput("plot"))
->>>>>>> 4b57c3ef327ad286bde0b021328193669243fb3e
+      #div(style="font-size: 1.5em;text-align:center",textOutput("title")
       )
     )
   )
