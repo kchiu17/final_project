@@ -1,11 +1,13 @@
 # Spotify Me
-[link here!](https://kchiu17.shinyapps.io/scripts/) or here: https://kchiu17.shinyapps.io/scripts/
+###
+[Click me for link](https://kchiu17.shinyapps.io/scripts/)
+or available here: https://kchiu17.shinyapps.io/scripts/
 
 ## What is Spotify Me?
 What we have created is an interactive visualization that allows the user to better understand
 important trends that occur within the songs of different artists that are on Spotify.
 
-##How Do You Use It?
+## How Do You Use It?
 Firstly, the user would specify which artists songs that they want to specifically review and
 understand better. Once given a specific artist, the user can then filter the music down to their
 desired preference of release date, tempo, danceability, and duration of the song. Once the user
