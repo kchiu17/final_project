@@ -2,7 +2,9 @@ library('shiny')
 library('dplyr')
 library('ggplot2')
 library('spotifyr')
+library('stringr')
 source('keys.R')
+library(tools)
 
 Sys.setenv(SPOTIFY_CLIENT_ID = spotify.id)
 Sys.setenv(SPOTIFY_CLIENT_SECRET = spotify.client.secret)
@@ -15,6 +17,18 @@ server <- function(input, output) {
     return(get_artist_audio_features(input$artist))
   })
   
+  axis_key_conversion_x <- reactive ({
+    worse_version <- str_replace_all(input$x, " ", "_")
+    worst_version <- tolower(worse_version)
+    return(worst_version)
+  })
+
+  axis_key_conversion_y <- reactive ({
+    worse_version <- str_replace_all(input$y, " ", "_")
+    worst_version <- tolower(worse_version)
+    return(worst_version)
+  })  
+  
   output$plot <- renderPlot({
     artist_info <- data() %>%
       filter(tempo >= input$tempo[1], tempo <= input$tempo[2]) %>%
@@ -25,9 +39,21 @@ server <- function(input, output) {
       filter((duration_ms / 60000) >= input$duration[1],
              (duration_ms / 60000) <= input$duration[2])
     
-    plot<-ggplot(artist_info, aes(x=track_name, y=track_popularity)) +
-      geom_bar(stat="identity") + coord_flip()
+    input_x <- rlang::sym(axis_key_conversion_x())
+    input_y <- rlang::sym(axis_key_conversion_y())
+    
+    plot<-ggplot(artist_info, aes(x=!!input_x, y=!!input_y)) +
+      geom_point(size = 2, shape=1) +
+      scale_shape_discrete(solid = F) +
+      geom_point(aes(size = track_popularity)) + 
+      xlab(input$x) +
+      ylab(input$y) + 
+      ggtitle(paste("Plot of ", input$x, " vs ", input$y, " of ", input$artist, "'s Songs", sep=""))
     return(plot)
   })
+  
+ ## output$title <- renderText({
+##    paste("Plot of ", input$x, " vs ", input$y, " of ", input$artist, "'s Songs", sep="")
+##  })
 }
 shinyServer(server)
