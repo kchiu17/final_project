@@ -46,8 +46,7 @@ server <- function(input, output) {
     plot<-ggplot(artist_info, aes(x=!!input_x, y=!!input_y)) +
       scale_shape_discrete(solid = F) +
       geom_point(aes(text = track_name, size = track_popularity), color = "red", alpha = 1/2) + 
-      xlab(input$x) +
-      ylab(input$y) 
+      theme_bw() + xlab(input$x) + ylab(input$y) 
     plot <- ggplotly(plot)
     return(plot)
   })
