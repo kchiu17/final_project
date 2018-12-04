@@ -1,9 +1,8 @@
 library("shiny")
 
-choices <- c(0,1,2,3,4,5,"5+")
 ui <- fluidPage(
   titlePanel("Spotify Me!"),
-  h4("Made by Team BA6 with no Brian"),
+  h4("Made by Team BA6"),
   sidebarLayout(
     sidebarPanel(
       textInput("artist", "Input Artist Here", "Taylor Swift"),
@@ -16,14 +15,14 @@ ui <- fluidPage(
     mainPanel(
       div(style="text-align:center;",
       h4("Change Axis Data")),
-      div(style="display: inline-block;vertical-align:top; width: 150px; text-align: left",
+      div(style="display: inline-block;vertical-align:top; width: 150px; margin-right: 35em;",
       selectInput("x", "X-axis", c("Track Popularity", "Album Release Date", "Danceability", "Instrumentalness", "Tempo", "Duration ms"),
                   selected="Tempo", multiple=FALSE)),
-      div(style="display: inline-block;vertical-align:top; width: 150px; align-items: right",
+      div(style="display:inline-block;vertical-align:top; width: 150px;",
       selectInput("y", "Y-axis", c("Track Popularity", "Album Release Date", "Danceability", "Instrumentalness", "Tempo", "Duration ms"),
                   selected="Danceability", multiple=FALSE)),        
-      textOutput("title"),
-      plotOutput("plot")
+      div(style="font-size: 1.5em;text-align:center",textOutput("title"),
+      plotOutput("plot"))
       )
     )
   )

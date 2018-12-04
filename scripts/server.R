@@ -3,8 +3,8 @@ library('dplyr')
 library('ggplot2')
 library('spotifyr')
 library('stringr')
+library('tools')
 source('keys.R')
-library(tools)
 
 Sys.setenv(SPOTIFY_CLIENT_ID = spotify.id)
 Sys.setenv(SPOTIFY_CLIENT_SECRET = spotify.client.secret)
@@ -47,13 +47,12 @@ server <- function(input, output) {
       scale_shape_discrete(solid = F) +
       geom_point(aes(size = track_popularity)) + 
       xlab(input$x) +
-      ylab(input$y) + 
-      ggtitle(paste("Plot of ", input$x, " vs ", input$y, " of ", input$artist, "'s Songs", sep=""))
+      ylab(input$y)  
     return(plot)
   })
   
- ## output$title <- renderText({
-##    paste("Plot of ", input$x, " vs ", input$y, " of ", input$artist, "'s Songs", sep="")
-##  })
+  output$title <- renderText({
+    paste("Plot of ", input$x, " vs ", input$y, " of ", input$artist, "'s Songs", sep="")
+  })
 }
 shinyServer(server)
