@@ -3,6 +3,7 @@ library('dplyr')
 library('ggplot2')
 library('spotifyr')
 library('stringr')
+library('plotly')
 source('keys.R')
 library(tools)
 
@@ -29,7 +30,7 @@ server <- function(input, output) {
     return(worst_version)
   })  
   
-  output$plot <- renderPlot({
+  output$plot <- renderPlotly({
     artist_info <- data() %>%
       filter(tempo >= input$tempo[1], tempo <= input$tempo[2]) %>%
       filter(danceability >= input$danceability[1], 
@@ -45,10 +46,11 @@ server <- function(input, output) {
     plot<-ggplot(artist_info, aes(x=!!input_x, y=!!input_y)) +
       geom_point(size = 2, shape=1) +
       scale_shape_discrete(solid = F) +
-      geom_point(aes(size = track_popularity)) + 
+      geom_point(aes(text = track_name, size = track_popularity)) + 
       xlab(input$x) +
       ylab(input$y) + 
       ggtitle(paste("Plot of ", input$x, " vs ", input$y, " of ", input$artist, "'s Songs", sep=""))
+    plot <- ggplotly(plot)
     return(plot)
   })
   

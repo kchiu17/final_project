@@ -1,4 +1,5 @@
 library("shiny")
+library('plotly')
 
 choices <- c(0,1,2,3,4,5,"5+")
 ui <- fluidPage(
@@ -23,7 +24,7 @@ ui <- fluidPage(
       selectInput("y", "Y-axis", c("Track Popularity", "Album Release Date", "Danceability", "Instrumentalness", "Tempo", "Duration ms"),
                   selected="Danceability", multiple=FALSE)),        
       textOutput("title"),
-      plotOutput("plot")
+      plotlyOutput("plot")
       )
     )
   )
