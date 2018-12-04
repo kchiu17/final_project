@@ -48,14 +48,13 @@ server <- function(input, output) {
       scale_shape_discrete(solid = F) +
       geom_point(aes(text = track_name, size = track_popularity)) + 
       xlab(input$x) +
-      ylab(input$y) + 
-      ggtitle(paste("Plot of ", input$x, " vs ", input$y, " of ", input$artist, "'s Songs", sep=""))
+      ylab(input$y) 
     plot <- ggplotly(plot)
     return(plot)
   })
   
-  #output$title <- renderText({
-   # paste("Plot of ", input$x, " vs ", input$y, " of ", input$artist, "'s Songs", sep="")
-  #})
+  output$title <- renderText({
+    paste("Plot of ", input$x, " vs ", input$y, " of ", input$artist, "'s Songs", sep="")
+  })
 }
 shinyServer(server)
