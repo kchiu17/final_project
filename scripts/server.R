@@ -14,10 +14,12 @@ access_token <- get_spotify_access_token()
 
 server <- function(input, output) {
   
+  # Returns a data frame of the input artist
   data <- reactive ({
     return(get_artist_audio_features(input$artist))
   })
   
+  # Turns the textbox selection into a column name that is useable from the spotify api
   axis_key_conversion_x <- reactive ({
     worse_version <- str_replace_all(input$x, " ", "_")
     worst_version <- tolower(worse_version)
@@ -30,6 +32,7 @@ server <- function(input, output) {
     return(worst_version)
   })  
   
+  # Plots tracks filtered by tempo, danceability, album release date, and duration
   output$plot <- renderPlotly({
     artist_info <- data() %>%
       filter(tempo >= input$tempo[1], tempo <= input$tempo[2]) %>%
@@ -51,6 +54,7 @@ server <- function(input, output) {
     return(plot)
   })
   
+  # Creates a title for the plot with specified variables by the user
   output$title <- renderText({
     paste("Plot of ", input$x, " vs ", input$y, " of ", input$artist, "'s Songs", sep="")
   })
